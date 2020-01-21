@@ -1,4 +1,7 @@
-//NOT FINISH!!!
+//This programe reocrds some data from the user about a book,
+//it is created to calculate the estiamted cost following some
+//rules that are detailed in the readme of the repo. It is the second 'learn by / /pracitce' in the google c++ learnign course for dev
+//TO IMPROVE, errors manage, input control, total amount (addition of every book estimation), add new objets (books)
 #include<iostream>
 #include<string>
 
@@ -8,18 +11,20 @@ class Book {
 	private:
 	  string b_name;
 	  float b_price;
-	  int b_code, b_inventory, b_enrollment;
+	  int b_code, b_inventory, b_enrollment, estimation, totalprice;
 	  enum B_req {required, optional};
 	  B_req isitreq;
 	  enum B_past {used, new_};
 	  B_past isitnew;
 	public:
-	  void set(string title, float price, int code, int inventory, int enrollment, B_req req, B_past pas) {
+	  void set(string title, float price, int code, int inventory, int enrollment, int est, int tpric, B_req req, B_past pas) {
 	     b_name = title;
 	     b_price = price;
 	     b_code = code;
 	     b_inventory = inventory;
 	     b_enrollment = enrollment;
+	     estimation = est;
+	     totalprice = tpric;
 	     req;
 	     pas;
 	     return;
@@ -30,7 +35,7 @@ class Book {
 	};
 
 void Book::add_book(){
-
+	//This function adds a new book 
 	int user_option, user_option2;	
 	cout << "Please enter the book title: " << endl;
 	cin >> b_name;
@@ -52,7 +57,8 @@ void Book::add_book(){
 	}
 
 void Book::display_info(){
-	char *reqornot [] =
+	//This function display the basic info about a book
+	char *reqornot [] = //this pointers are designed to translate the enum adn print a string
 	{
 		"required",
 		"optional"
@@ -74,7 +80,7 @@ void Book::display_info(){
 
 void Book::calc_book(){
 	int estimation;
-
+	//here begins the stimation calc following the intsructions
 	if (isitreq == 0){
 	
 		if (isitnew == 1){
@@ -91,21 +97,29 @@ void Book::calc_book(){
 		}
 	};
 	cout << "Need to order: " << estimation << endl;
-	cout << "Total price : " << estimation * b_price << endl;
+	totalprice = estimation * b_price;
+	cout << "Total cost of : " << b_name << " is " << totalprice << endl;
 	return;
 
 }
+
 int main(){
 	int resp;
-	Book book;
+	Book book[5]; //In a future version I want to improve the way to store books
+	int i , b;
+	for (i = 0; i < 5; i++){
 	while(1){
-	book.add_book();
-	book.display_info();
-	book.calc_book();
-	cout << "Enter 1 to do another book, 0 to stop. 0 " << endl;
+	book[i].add_book();
+	book[i].calc_book();
+	cout << "Enter 1 to do another book, 0 to stop. " << endl;
 	  cin >> resp;
 	  if (resp ==  0)
-		 break; 
+		  i = 5;
+		  break; 
+		}
 	}
+	cout << "Enter the numbre 1 of the book to display information " << endl;
+	cin >> b;
+	book[b].display_info();
 	return 0;
 }
