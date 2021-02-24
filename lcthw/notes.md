@@ -9,7 +9,17 @@ A variable declaration and assignment at the same time. This is how you create a
 
 	type name = value
 
-**gdb**
+[ASCII Table](http://www.asciitable.com/)
+
+##GDB
+
+Antes de nada, para no leer el código esamblado es mejor compilar:
+
+	gcc -g -o test test.c
+
+Para empezar a pocos se usa **start** y crea u bkp temporal
+
+**list** imprime 10 línieas de código
 
 layout next
 b main para poner un break point en el inicio
