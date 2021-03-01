@@ -1,5 +1,5 @@
 CFLAGS=-Wall -g
 all:
-	gcc -g ex10.c -o ex10
+	gcc -g ex11.c -o ex11
 clean:
-	rm -f ex10
+	rm -f ex11
