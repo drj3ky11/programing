@@ -17,6 +17,8 @@ Antes de nada, para no leer el código esamblado es mejor compilar:
 
 	gcc -g -o test test.c
 
+set arguments para pasarle argumentos
+
 Para empezar a pocos se usa **start** y crea u bkp temporal
 
 **list** imprime 10 línieas de código
